@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_cita_tree" model="ir.ui.view">
+            <field name="name">cita.cita.tree</field>
+            <field name="model">cita.cita</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Cita">
+                    <field name="autor" />
+                    <field name="cita" />
+                    <field name="fecha_visualizacion" />
+                    <field name="orden_visualizacion" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="view_cita_form" model="ir.ui.view">
+            <field name="name">cita.cita.form</field>
+            <field name="model">cita.cita</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Cita">
+                    <sheet>
+                        <group>
+                            <field name="autor"/>
+                            <field name="cita"/>
+                            <field name="fecha_visualizacion"/>
+                            <field name="orden_visualizacion"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_view_citas">
+            <field name="name">Citas</field>
+            <field name="res_model">cita.cita</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Crea una nueva cita</p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="cita_search_view">
+        	<field name="name">cita.search</field>
+        	<field name="model">cita.cita</field>
+        	<field name="arch" type="xml">
+        		<search>
+        			<field name="autor"/>
+        			<field name="cita"/>
+        		</search>
+    		</field>	
+        </record>
+        
+        <menuitem id="menu_citasjjm" name="Citasjjm"/>
+        <menuitem id="menu_cita" name="Citas" parent="menu_citasjjm"/> 
+        <menuitem id="cita" name="Cita" parent="menu_cita" action="action_view_citas"/>
+
+    </data>
+</odoo>
